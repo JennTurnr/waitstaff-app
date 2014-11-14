@@ -10,7 +10,9 @@
   <body>
     <h1 id="header">Waitstaff Calculator</h1>
       <section>
-          <form ng-controller="appCtrl" ng-model="data" ng-submit='submitted=true;submit()' name="mealForm">
+          <form name="mealForm" ng-controller="appCtrl" ng-model="data" ng-submit='submit()' novalidate>
+            <!-- ng-submit='submitted=true;submit()' -->
+           <!--  <pre>{{ mealForm.data.$valid | json }}</pre> -->
   <table id="meal-details">
           <label id="label-one">Enter The Meal Details</label>
       <!-- <label>Enter the Meal Details</label> -->
@@ -22,8 +24,10 @@
       </tr>
         <td>Tip Percentage: % <input type="number" placeholder="ex 5%" name="tip" ng-model="tip" required></td>
       <tr>
-        <td><input type="submit" value="Submit" class="btn">
-      <input type="submit" value="Cancel" class="btn"></td>
+        <td><input type="submit" ng-click="submit()" value="Submit" class="btn">
+      <!-- <input type="submit" value="Cancel" class="btn" name="cancel"></td> -->
+
+      <input type="button" ng-click="cancel()" value="Cancel" class="btn"></td>
     </tr>
   </table>
     <table id="charges">
@@ -33,20 +37,20 @@
         <!-- <td>Subtotal: {{ data.subtotal }}</td> -->
       </tr>
       <tr>
-        <td id="add">Tip: {{ tip () }}</td> <!-- needs to be a function -->
+        <td>Tip: {{ num (tip) }}</td> <!-- needs to be a function -->
       </tr>
       <tr>
-        <td>Total: {{ compute () }}</td> <!-- needs to be a function -->
+        <td>Total: {{ compute (total) }}</td> <!-- needs to be a function -->
       </tr>
     </table>
 
 <table id="earnings">
   <label id="label-three">My Earnings Info</label>
     <tr>
-      <td id="tipTotal">Tip Total:</td>
+      <td id="tipTotal">Tip Total: {{ tipcount }} </td>
     </tr>
     <tr>
-      <td>Meal count:</td>
+      <td>Meal count: {{ mealcount }} </td>
     </tr>
     <tr>
       <td>Average Tip Per Meal:</td>

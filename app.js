@@ -25,10 +25,10 @@
   };
 
 
-    var tip = function() {
+    /* var tip = function() {
       // for loop
       return tip;
-    };
+    }; */
 
    var meal = function(tip,tax) {
       // for loop
@@ -73,24 +73,74 @@
     }; 
 
     // Calculate Tip
-    $scope.tip = function() {
+    var num = 0;
+    $scope.num = function(tip) {
       if (typeof tip === "undefined") {
         return "";
       }
       var tip = parseInt(tip,10);
-      return tip;
-    } 
+      
+      num = tip/100;
 
-    $scope.compute = function(subtotal,tip) {
+      return num;
+      //console.log("working");
+    }; 
+
+    var compute = 0;
+    $scope.compute = function(total) {
+      if (typeof subtotal === "undefined" || typeof tip === "undefined") {
+        return "";
+      }
+
+      var tip = parseInt(tip,1000);
+      var total = parseInt(total,10);
+    
+      total = subtotal + tip;
+
+      return compute;
+    };
+
+    // Tip Count 
+    var i = 0;
+    $scope.tipcount = function(tip) {
+      for (i = 0; i < tip.length; i++) {
+        return tip;
+      }
+    };
+
+    var i = 0;
+    $scope.mealcount = function(meal) {
+      for (i = 0; i < meal.length; i++) {
+        return meal;
+      }
+    };
+    // Calculate Total 
+   
+
+      // total = subtotal + tip;
+      // return total;
+
+    // };
+    /* var compute = 0;
+    $scope.compute = function(subtotal, tip) {
+      if (typeof subtotal === "undefined" || typeof tip === "undefined") {
+        return "";
+      }
+
+      compute = subtotal + tip;
+      return compute;
+    };
+    /*$scope.compute = function(subtotal,tip) {
       return subtotal + tip;
       // subtotal + tip
-    };
+    };*/
 
 // $scope.$watch('perMeal', meal);
 
     $scope.reset = function() {
-      $scope.data = {};
-      mealForm = true;
+      //$scope.data = {};
+      //mealForm = true;
+      console.log("testing 4,3,2,1");
     };
 
 
@@ -100,8 +150,17 @@
 
 
 
-      
+      $scope.submit = function() {
+        console.log("testing");
+
+      };
+
+     
     
+      $scope.cancel = function() {
+        console.log("testing 1,2,3");
+      };
+
 
 //var meal =
 //var tip =
