@@ -8,7 +8,7 @@
 // Cancel button clears input only ??
 // Reset button ??
 
-  function appCtrl($scope) {
+function appCtrl($scope) {
 
   $scope.data = {};
 
@@ -25,154 +25,116 @@
   };
 
 
-    /* var tip = function() {
-      // for loop
-      return tip;
-    }; */
-
-   var meal = function(tip,tax) {
-      // for loop
-      return meal;
-    };
+  var meal = function(tip, tax) {
+    // for loop
+    return meal;
+  };
 
 
+  // create a subtotal variable 
+  var subtotal = 0;
+  $scope.subtotal = function(meal, tax) {
+    if (typeof meal === "undefined" || typeof tax === "undefined") {
+      return "";
+    }
+    var meal = parseInt(meal, 10); // Meal is 20
+    var tax = parseInt(tax, 10); // tax is 10
+    var mealTax = meal * tax / 100; // mealtax is 2
+    // return mealTax; // subtotal = meal + mealTax;
+    subtotal = meal + mealTax;
+    // return meal + mealTax;
+    return subtotal;
+  };
 
-     /*  $scope.meal =function(tip,tax) {
-      return (meal + tip + tax);
-    }; */
+  // Calculate Tip
+  var num = 0;
+  $scope.num = function(tip) {
+    if (typeof tip === "undefined") {
+      return "";
+    }
+    var tip = parseInt(tip, 10);
 
+    num = tip / 100;
 
-    /* $scope.tip = function() {
-      // convert percentage to integer parsefloat /100
-      return tip;
-    }; */
-    
-  
-    
+    return num;
+    //console.log("working");
+  };
 
-    /* var tax = function() {
-      return tax;
-    }; */
+  // Calculate Total
+  var compute = 0;
+  $scope.compute = function(subtotal, tip, tax, meal) {
+    if (typeof subtotal === "undefined" || typeof tip === "undefined" || typeof tax === "undefined" || typeof meal === "undefined") {
+      return "";
+    }
 
-   /* var subtotal = function(meal,tax) {
-      return meal + tax;
-    }; */
-// create a subtotal variable 
-    var subtotal = 0;
-    $scope.subtotal = function(meal,tax) {
-      if (typeof meal === "undefined" || typeof tax === "undefined") {
-        return "";
-      }
-      var meal = parseInt(meal,10); // Meal is 20
-      var tax = parseInt(tax, 10); // tax is 10
-      var mealTax = meal * tax/100; // mealtax is 2
-      // return mealTax; // subtotal = meal + mealTax;
-      subtotal = meal + mealTax;
-      // return meal + mealTax;
-      return subtotal;
-    }; 
+    // subtotal = parseInt(total,100);
+    //  tip = parseInt(tipping,100);
+    subtotal = parseInt(subtotal, 10) || 0;
+    tip = parseInt(tip, 10) || 0;
+    tax = parseInt(tax, 10) || 0;
+    meal = parseInt(meal, 10) || 0;
+    compute = subtotal + tip + tax + meal;
 
-    // Calculate Tip
-    var num = 0;
-    $scope.num = function(tip) {
-      if (typeof tip === "undefined") {
-        return "";
-      }
-      var tip = parseInt(tip,10);
-      
-      num = tip/100;
+    return compute;
+  };
 
-      return num;
-      //console.log("working");
-    }; 
-
-    // Calculate Total
-    var compute = 0;
-    $scope.compute = function(subtotal,tip) {
-     if (typeof subtotal === "undefined" || typeof tip === "undefined") {
-       return "";
-      }
-
-      // subtotal = parseInt(total,100);
-     //  tip = parseInt(tipping,100);
-      subtotal = parseInt(subtotal,10) || 0;
-      tip = parseInt(tip,1000) || 0;
-      compute = subtotal + tip;
-
-      return compute;
-    };
-
-    // Tip Count 
-    // var i = 0;
-    $scope.tipcount = function(tip) {
-      var i = 0;
-      for (i = 0; i < tip.length; i++) {
-        return tip;
-      }
-      tipcount([tip]);
-    };
-
+  // Tip Count 
+  $scope.tipcount = function(tip) {
     var i = 0;
-    $scope.mealcount = function(meal) {
-      for (i = 0; i < meal.length; i++) {
-        return meal;
-      }
-    };
-    // Calculate Total 
-   
+    for (i = 0; i < tip.length; i++) {
+      return tip;
+    }
+    tipcount([tip]);
+  };
 
-      // total = subtotal + tip;
-      // return total;
-
-    // };
-    /* var compute = 0;
-    $scope.compute = function(subtotal, tip) {
-      if (typeof subtotal === "undefined" || typeof tip === "undefined") {
-        return "";
-      }
-
-      compute = subtotal + tip;
-      return compute;
-    };
-    /*$scope.compute = function(subtotal,tip) {
-      return subtotal + tip;
-      // subtotal + tip
-    };*/
-
-// $scope.$watch('perMeal', meal);
-
-    $scope.reset = function() {
-      //$scope.data = {};
-      //mealForm = true;
-      console.log("testing 4,3,2,1");
-    };
+  var i = 0;
+  $scope.mealcount = function(meal) {
+    for (i = 0; i < meal.length; i++) {
+      return meal;
+    }
+    mealcount([meal]);
+  };
 
 
-  $scope.showForm = function(){
-      return mealForm;
-    };
+// Average Tip Per meal
+var average = 0;
+$scope.average = function(tipcount) {
+  if (typeof tipcount === "undefined") {
+    return "";
+  }
+  tipcount = parseInt(tipcount,10);
+  average = parseInt(average,10);
+  average = tipcount/100 || 0;
+
+  return average;
+
+};
+
+
+  $scope.reset = function() {
+    // $scope.data = {};
+    // mealForm = true;
+    console.log("testing 4,3,2,1");
+  };
+
+
+  $scope.showForm = function() {
+    return mealForm;
+  };
 
 
 
-      $scope.submit = function() {
-        console.log("testing");
+  $scope.submit = function() {
+    console.log("testing");
 
-      };
-
-     
-    
-      $scope.cancel = function() {
-        console.log("testing 1,2,3");
-      };
+  };
 
 
-//var meal =
-//var tip =
-//var subtotal = subtotal + tip;
 
+  $scope.cancel = function() {
+    console.log("testing 1,2,3");
+  };
 }
 
-angular
-  .module('waitstaffApp',[])
+angular.module('waitstaffApp', [])
   .controller('appCtrl', appCtrl);
-
