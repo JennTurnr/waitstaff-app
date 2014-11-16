@@ -86,26 +86,30 @@
       //console.log("working");
     }; 
 
+    // Calculate Total
     var compute = 0;
-    $scope.compute = function(total) {
-      if (typeof subtotal === "undefined" || typeof tip === "undefined") {
-        return "";
+    $scope.compute = function(subtotal,tip) {
+     if (typeof subtotal === "undefined" || typeof tip === "undefined") {
+       return "";
       }
 
-      var tip = parseInt(tip,1000);
-      var total = parseInt(total,10);
-    
-      total = subtotal + tip;
+      // subtotal = parseInt(total,100);
+     //  tip = parseInt(tipping,100);
+      subtotal = parseInt(subtotal,10) || 0;
+      tip = parseInt(tip,1000) || 0;
+      compute = subtotal + tip;
 
       return compute;
     };
 
     // Tip Count 
-    var i = 0;
+    // var i = 0;
     $scope.tipcount = function(tip) {
+      var i = 0;
       for (i = 0; i < tip.length; i++) {
         return tip;
       }
+      tipcount([tip]);
     };
 
     var i = 0;
@@ -171,3 +175,4 @@
 angular
   .module('waitstaffApp',[])
   .controller('appCtrl', appCtrl);
+
