@@ -77,14 +77,14 @@ Subtotal: {{ data.subtotal }}
       </tr>
       <tr>
         <td>
-          Tip: {{ num (tip) }}
+          Tip: {{ computeTip () }}
         </td>
         
         <!-- needs to be a function -->
       </tr>
       <tr>
         <td>
-          Total: {{ compute (subtotal,tip,tax,meal) }}
+          Total: {{ compute () }}
         </td>
         
         <!-- needs to be a function -->
@@ -97,17 +97,17 @@ Subtotal: {{ data.subtotal }}
               </label>
               <tr>
                 <td id="tipTotal">
-                  Tip Total: {{ tipcount (tip) }} 
+                  Tip Total: {{ tipTotalCount  }} 
                 </td>
               </tr>
               <tr>
                 <td>
-                  Meal count: {{ mealcount (meal) }} 
+                  Meal count: {{ mealcount  }} 
                 </td>
               </tr>
               <tr>
                 <td>
-                  Average Tip Per Meal: {{ average(tipcount) }}
+                  Average Tip Per Meal: {{ avgTipPerMeal }}
                 </td>
               </tr>
             </table>
